@@ -6,6 +6,8 @@ import router from './router'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import FastClick from 'fastclick' // 解决移动端300毫秒延迟
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
     FastClick.attach(document.body)
@@ -13,6 +15,8 @@ if ('addEventListener' in document) {
 }
 Vue.config.productionTip = false
 Vue.use(Mint)
+
+Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

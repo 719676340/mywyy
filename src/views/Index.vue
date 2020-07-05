@@ -30,13 +30,28 @@ export default {
     }
   },
   components: {},
-  created () {},
+  created () {
+    let temparr = this.$route.path.split('/')
+    if (temparr[1] === 'index') {
+      this.handleTapChange(temparr[2])
+    }
+  },
   mounted () {},
   methods: {
+    handleTapChange (val) {
+      this.selected = val
+    }
   },
   watch: {
     selected: function (val, oldVal) {
       this.$router.push({ path: '/index/' + val })
+    },
+    $route (to, from) {
+      const path = to.path
+      var temp = path.split('/')
+      if (temp[1] === 'index') {
+        this.handleTapChange(temp[2])
+      }
     }
   }
 }
@@ -60,7 +75,7 @@ export default {
 .fixed-bar .range div{
   font-size: 14px;
 }
-.default-view{
+/* .default-view{
     margin-top: 104px;
-}
+} */
 </style>
