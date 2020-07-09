@@ -26,6 +26,18 @@
             <div class="item-name">{{item.name}}</div>
           </div>
         </div>
+        <div class="g-title song-list">
+          推荐MV
+          <router-link :to="{}">更多></router-link>
+        </div>
+        <div class="mvlistbox">
+          <div class="mvbox" v-for="item in mvList" :key="item.id">
+            <div class="bar">{{item.playCount|formatCount}}</div>
+            <img class="imgresponse" :src="item.picUrl">
+            <div class="item-name">{{item.name}}</div>
+            <div class="author">{{item.artistName}}</div>
+          </div>
+        </div>
         <!-- 这里会有个问题就是当我跳转路由之后导航栏的高亮标不会跟着移动 所以是需要监听路由变化的 -->
       </div>
   </div>
@@ -93,10 +105,9 @@ export default {
   -webkit-animation: rotateArround 3.5s linear 3s infinite;
   animation: rotateArround 3.5s linear 3s infinite;
 }
-/* .slider{
-  width: 100%;
-  height: 166.5px;
-} */
+.slider{
+  z-index: 0;
+}
 .container{
   padding: 0;
   margin-top: 0;
@@ -162,5 +173,48 @@ export default {
   font-size: 12px;
   overflow: hidden;
   text-align: left;
+}
+.mvlistbox{
+  display: flex;
+  display: -webkit-flex;
+  min-height: 290px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+.mvlistbox .mvbox{
+  /* height: 50px; */
+  /* min-width: 80px; */
+  position: relative;
+  margin: 0 5px 5px 0;
+  flex: 1 1 48%;
+  text-align: center;
+}
+.mvlistbox .mvbox .bar{
+  position: absolute;
+  color: #fff;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: right;
+  padding: 2px 5px;
+  background-color: rgba(0,0,0,.2);
+}
+.mvlistbox .mvbox .imgresponse{
+  width: 100%;
+  height: 112.5px;
+}
+.mvlistbox .mvbox .item-name{
+  height: 14px;
+  line-height: 14px;
+  font-size: 14px;
+  overflow: hidden;
+  text-align: left;
+}
+.mvlistbox .mvbox .author{
+  font-size: 12px;
+  text-align: left;
+  color: rgb(102, 102, 102);
 }
 </style>
