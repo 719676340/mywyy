@@ -19,6 +19,13 @@
           推荐歌单
           <router-link :to="{path: '/index/songList'}">更多></router-link>
         </div>
+        <div class="songlistbox">
+          <div class="songbox" v-for="item in playList" :key="item.id">
+            <div class="bar">{{item.playCount|formatCount}}</div>
+            <img class="imgresponse" :src="item.picUrl">
+            <div class="item-name">{{item.name}}</div>
+          </div>
+        </div>
         <!-- 这里会有个问题就是当我跳转路由之后导航栏的高亮标不会跟着移动 所以是需要监听路由变化的 -->
       </div>
   </div>
@@ -58,6 +65,15 @@ export default {
         this.mvList = data[2].result.length > 4 ? data[2].result.slice(0, 6) : data[2].result
         this.isloading = false
       })
+    }
+  },
+  filters: {
+    formatCount (value) {
+      if (value < 10000) {
+        return value
+      } else {
+        return (value / 10000).toFixed(0) + '万'
+      }
     }
   }
 }
@@ -108,5 +124,43 @@ export default {
 .song-list {
   background: url("../../static/aei.png") no-repeat left center;
   background-size: 20px 20px;
+}
+
+.songlistbox{
+  display: flex;
+  display: -webkit-flex;
+  min-height: 323px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content:space-between
+}
+.songlistbox .songbox{
+  /* height: 50px; */
+  /* min-width: 80px; */
+  position: relative;
+  margin: 0 5px 5px 0;
+  flex: 1 1 30%;
+  text-align: center;
+}
+.songlistbox .songbox .bar{
+  position: absolute;
+  color: #fff;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: right;
+  padding: 2px 5px;
+  background-color: rgba(0,0,0,.2);
+}
+.songlistbox .songbox .imgresponse{
+  width: 100%;
+  height: 112.5px;
+}
+.songlistbox .songbox .item-name{
+  height: 38.25px;
+  font-size: 12px;
+  overflow: hidden;
+  text-align: left;
 }
 </style>
