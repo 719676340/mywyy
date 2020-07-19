@@ -105,12 +105,13 @@ export default {
   -webkit-animation: rotateArround 3.5s linear 3s infinite;
   animation: rotateArround 3.5s linear 3s infinite;
 }
-.slider{
+/* .slider{
   z-index: 0;
-}
+} */
 .container{
   padding: 0;
   margin-top: 0;
+  /* position: relative; */
 }
 .banner-item{
   width: 100%;
