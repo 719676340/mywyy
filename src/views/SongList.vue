@@ -5,9 +5,11 @@
           <div class="title">全部歌单</div>
           <div class="playlistbox">
             <div class="playlist" v-for="item in playlist" :key="item.id" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
-              <div class="bar">{{item.playCount|formatCount}}</div>
-              <img class="imgresponse" :src="item.coverImgUrl + '?param=300y300'" alt="" lazy="loading">
-              <div class="item-name">{{item.name}}</div>
+              <router-link :to="{name:'playListDetail',params:{id: item.id, name: item.name, coverImg: item.coverImgUrl, creator: item.creator, count: item.playCount, desc: item.description }}">
+                <div class="bar">{{item.playCount|formatCount}}</div>
+                <img class="imgresponse" :src="item.coverImgUrl + '?param=300y300'" alt="" lazy="loading">
+                <div class="item-name">{{item.name}}</div>
+              </router-link>
             </div>
           </div>
         </div>
@@ -94,6 +96,11 @@ export default {
   margin: 0 5px 5px 0;
   flex: 1 1 48%;
   text-align: center;
+  text-decoration: none;
+}
+.playlistbox .playlist a{
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
 }
 .playlistbox .playlist .bar{
   position: absolute;

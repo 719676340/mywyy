@@ -5,6 +5,7 @@ import Range from '../views/Range.vue'
 import SongList from '../views/SongList.vue'
 import LeaderBoard from '../views/LeaderBoard.vue'
 import HotSinger from '../views/HotSinger.vue'
+import playListDetail from '../views/playListDetail.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,11 @@ export default new Router({
         path: '/index/hotsinger',
         component: HotSinger
       }]
+    },
+    {
+      name: 'playListDetail',
+      path: '/playListDetail/:id',
+      component: playListDetail
     },
     {
       path: '*',
