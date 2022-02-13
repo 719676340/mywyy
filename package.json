@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "ajv": "^5.0.0",
+    "ajv": "^6.12.3",
     "axios": "^0.19.2",
     "fastclick": "^1.0.6",
     "mint-ui": "^2.2.13",
